@@ -13,15 +13,18 @@
       <div class="brand-mark">✦</div>
       <h1>glowingchat</h1>
       <p class="muted">A little corner of the internet.</p>
-      <form id="auth-form" class="panel auth-panel">
-        <label>Username<input id="auth-username" autocomplete="username" maxlength="24" required></label>
-        <label>Password<input id="auth-password" type="password" autocomplete="current-password" minlength="8" required></label>
-        <div class="button-row">
-          <button type="submit" class="primary" id="login-button">Log in</button>
-          <button type="button" id="signup-button" class="secondary">Create account</button>
-        </div>
-        <p id="auth-error" class="error" role="alert"></p>
-      </form>
+      
+<form id="auth-form" class="panel auth-panel">
+  <label>Username<input id="auth-username" autocomplete="username" maxlength="24"></label>
+  <label>Email address<input id="auth-email" type="email" autocomplete="email" required></label>
+  <label>Password<input id="auth-password" type="password" autocomplete="current-password" minlength="8" required></label>
+  <div class="button-row">
+    <button type="submit" class="primary" id="login-button">Log in</button>
+    <button type="button" id="signup-button" class="secondary">Create account</button>
+  </div>
+  <p id="auth-error" class="error" role="alert"></p>
+</form>
+
     </section>
 
     <section id="main-view" hidden>
