@@ -228,7 +228,6 @@ async function reportMessage(id){
   toast(error ? error.message : "Report submitted privately.");
 }
 
-}
 async function messageMenu(id){
   const m=state.publicMessages.find(x=>x.id===id);if(!m)return;
   const choice=prompt("Type: pin, block, report");
