@@ -94,7 +94,7 @@ async function renderPublic(){
 }
 async function loadPublicMessages(){
   const list=$("public-list");if(!list)return;
-  const {data,error}=await supabase.from("messages").select("id,body,created_at,user_id,profiles(username,avatar_url,role)").eq("room","public").order("created_at",{ascending:true}).limit(200);
+  const {data,error}=await supabase.from("messages").select("id,body,created_at,user_id,profiles!messages_user_id_fkey(username,avatar_url,role)").eq("room","public").order("created_at",{ascending:true}).limit(200);
   if(error){list.innerHTML=`<p class="error">${esc(error.message)}</p>`;return;}
   state.publicMessages=data||[];
   list.innerHTML=state.publicMessages.map(m=>messageHTML(m)).join("")||`<div class="empty">No messages yet. Start the conversation!</div>`;
