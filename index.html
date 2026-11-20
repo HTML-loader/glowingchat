@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,42 +14,47 @@
       <div class="brand-mark">✦</div>
       <h1>glowingchat</h1>
       <p class="muted">A little corner of the internet.</p>
-      
-<form id="auth-form" class="panel auth-panel">
-  <label>Username<input id="auth-username" autocomplete="username" maxlength="24"></label>
-  <label>Email address<input id="auth-email" type="email" autocomplete="email" required></label>
-  <label>Password<input id="auth-password" type="password" autocomplete="current-password" minlength="8" required></label>
-  <div class="button-row">
-    <button type="submit" class="primary" id="login-button">Log in</button>
-    <button type="button" id="signup-button" class="secondary">Create account</button>
-  </div>
-  <p id="auth-error" class="error" role="alert"></p>
-</form>
 
+      <form id="auth-form" class="panel auth-panel">
+        <label>Username<input id="auth-username" autocomplete="username" maxlength="24"></label>
+        <label>Email address<input id="auth-email" type="email" autocomplete="email" required></label>
+        <label>Password<input id="auth-password" type="password" autocomplete="current-password" minlength="8" required></label>
+        <div class="button-row">
+          <button type="submit" class="primary" id="login-button">Log in</button>
+          <button type="button" id="signup-button" class="secondary">Create account</button>
+        </div>
+        <p id="auth-error" class="error" role="alert"></p>
+      </form>
     </section>
 
     <section id="main-view" hidden>
       <header class="topbar">
-        <button class="brand-button" data-page="dashboard"><span class="brand-mark small">✦</span> glowingchat</button>
+        <button class="brand-button" data-page="dashboard">
+          <span class="brand-mark small">✦</span> glowingchat
+        </button>
         <div class="topbar-right">
           <span id="top-username" class="muted"></span>
           <button id="logout-button" class="quiet">Log out</button>
         </div>
       </header>
+
       <div class="layout">
         <nav class="sidebar panel" aria-label="Main navigation">
           <button data-page="dashboard" class="nav-button active">⌂ <span>Dashboard</span></button>
           <button data-page="public" class="nav-button">☷ <span>Public Chat</span></button>
           <button data-page="messages" class="nav-button">✉ <span>Private Messages</span><b id="unread-count"></b></button>
+          <button data-page="notifications" class="nav-button">♢ <span>Notifications</span><b id="notification-count"></b></button>
           <button data-page="announcements" class="nav-button">▤ <span>Announcements</span></button>
           <button data-page="profile" class="nav-button">◉ <span>My Profile</span></button>
           <button data-page="settings" class="nav-button">⚙ <span>Settings</span></button>
           <button data-page="creator" id="creator-nav" class="nav-button" hidden>✦ <span>Creator Dashboard</span></button>
         </nav>
+
         <section class="content">
           <div id="page-dashboard" class="page"></div>
           <div id="page-public" class="page" hidden></div>
           <div id="page-messages" class="page" hidden></div>
+          <div id="page-notifications" class="page" hidden></div>
           <div id="page-announcements" class="page" hidden></div>
           <div id="page-profile" class="page" hidden></div>
           <div id="page-settings" class="page" hidden></div>
@@ -58,6 +64,7 @@
       </div>
     </section>
   </main>
+
   <script type="module" src="./src/app.js"></script>
 </body>
 </html>
