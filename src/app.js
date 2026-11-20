@@ -204,11 +204,30 @@ async function handleAction(action,data){
   if(action==="unblock")unblock(data.id);
   if(action==="go-report")goToReport(data.id);
 }
+
 async function reportMessage(id){
-  const reason=prompt("Why are you reporting this message?");if(!reason)return;
-  const m=state.publicMessages.find(x=>x.id===id);if(!m)return;
-  const {error}=await supabase.from("reports").insert({reporter_id:state.user.id,reported_user_id:m.user_id,message_id:id,context:reason,report_type:"message"});
-  toast(error?error.message:"Report submitted privately.");
+  const m = state.publicMessages.find(x => x.id === id);
+  if(!m)return;
+
+  if(m.user_id === state.user.id){
+    toast("You cannot report your own message.");
+    return;
+  }
+
+  const reason = prompt("Why are you reporting this message?");
+  if(!reason)return;
+
+  const {error} = await supabase.from("reports").insert({
+    reporter_id: state.user.id,
+    reported_user_id: m.user_id,
+    message_id: id,
+    context: reason,
+    report_type: "message"
+  });
+
+  toast(error ? error.message : "Report submitted privately.");
+}
+
 }
 async function messageMenu(id){
   const m=state.publicMessages.find(x=>x.id===id);if(!m)return;
